@@ -7,8 +7,7 @@
     "build:watch": "webpack --watch",
     "build:prod": "webpack -p",
     "serve": "nodemon dist/server",
-    "analyze-bundle":
-      "webpack -p --profile --json > stats.json && webpack-bundle-analyzer stats.json dist/public -s gzip",
+    "analyze-bundle": "webpack -p --profile --json > stats.json && webpack-bundle-analyzer stats.json dist/public -s gzip",
     "lint": "eslint --ext .js,.jsx src/",
     "format": "prettier --write 'src/**/*.{js,jsx}'",
     "test": "echo \"Error: no test specified\" && exit 1"
