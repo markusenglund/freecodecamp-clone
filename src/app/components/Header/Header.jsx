@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Link } from "redux-little-router";
 import "./Header.scss";
+import CommunityDropdown from "./CommunityDropdown";
 import logo from "../../assets/freecodecamp_logo.svg";
 
 class Header extends Component {
@@ -23,9 +24,7 @@ class Header extends Component {
           >
             Donate
           </a>
-          <Link href="/" className="header-item">
-            Community
-          </Link>
+          <CommunityDropdown />
           <Link href="/profile" className="header-item">
             Profile
           </Link>
