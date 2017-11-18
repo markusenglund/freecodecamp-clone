@@ -9,7 +9,7 @@ app.use(compression());
 app.use("/public", express.static(path.join("dist/public")));
 app.get("*", renderPage);
 
-const port = process.env.PORT || "1337";
+const port = process.env.PORT || "8080";
 
 /* eslint-disable no-console */
 app.listen(port, () => console.log(`Server listening on port ${port}`));
