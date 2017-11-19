@@ -1,5 +1,6 @@
 const fs = require("fs");
 
-const json = JSON.parse(fs.readFileSync("./challenge-map.json", "utf8"));
-const mapData = JSON.stringify(json.data.entities.block);
-fs.writeFileSync("map.json", mapData);
+const json = JSON.parse(fs.readFileSync("./trash/challenge-map.json", "utf8"));
+const superBlocks = JSON.stringify(json.data.entities.superBlock);
+
+fs.writeFileSync("super-blocks.json", superBlocks);

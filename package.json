@@ -15,6 +15,7 @@
   "author": "Markus Englund <markus.s.englund@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.17.1",
     "compression": "^1.7.1",
     "express": "^4.16.2",
     "prop-types": "^15.6.0",
@@ -25,6 +26,7 @@
     "redux": "^3.7.2",
     "redux-devtools-extension": "^2.13.2",
     "redux-little-router": "^14.2.3",
+    "redux-thunk": "^2.2.0",
     "reselect": "^3.0.1"
   },
   "devDependencies": {

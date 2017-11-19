@@ -8,4 +8,14 @@ const counter = (state = 1, action) => {
   }
 };
 
-export default { counter };
+const map = (state = [], action) => {
+  switch (action.type) {
+    case "RECEIVE_MAP_DATA": {
+      return action.payload;
+    }
+    default:
+      return state;
+  }
+};
+
+export default { counter, map };

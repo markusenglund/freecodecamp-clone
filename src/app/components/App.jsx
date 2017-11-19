@@ -1,13 +1,31 @@
-import React from "react";
+import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Fragment, Link } from "redux-little-router";
+import PropTypes from "prop-types";
 
 import "./App.scss";
 import Header from "./Header/Header";
+import Map from "./Map/Map";
+import { fetchMapData } from "../actionCreators";
 
-const App = () => (
-  <div>
-    <Header />
-  </div>
-);
+class App extends Component {
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch(fetchMapData());
+  }
 
-export default App;
+  render() {
+    return (
+      <div>
+        <Header />
+        <Map />
+      </div>
+    );
+  }
+}
+
+App.propTypes = {
+  dispatch: PropTypes.func.isRequired
+};
+
+export default connect()(App);
