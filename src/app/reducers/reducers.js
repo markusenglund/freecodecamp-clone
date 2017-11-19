@@ -8,7 +8,7 @@ const counter = (state = 1, action) => {
   }
 };
 
-const map = (state = [], action) => {
+const map = (state = {}, action) => {
   switch (action.type) {
     case "RECEIVE_MAP_DATA": {
       return action.payload;

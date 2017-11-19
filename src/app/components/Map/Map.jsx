@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import superBlocks from "../../assets/super-blocks.json";
+// import superBlocks from "../../assets/super-blocks.json";
 import "./Map.scss";
 
 /*
@@ -17,9 +17,10 @@ superBlocks: {
 class Map extends Component {
   render() {
     const { challenges } = this.props;
+    console.log(challenges);
     return (
       <div className="map">
-        {Object.values(superBlocks).map(superBlock => (
+        {Object.values(challenges).map(superBlock => (
           <div className="super-block" key={superBlock.order}>
             <div className="super-block-title">{superBlock.title}</div>
             {superBlock.isOpen && (
@@ -33,14 +34,14 @@ class Map extends Component {
             )}
           </div>
         ))}
-        {challenges.map(superBlock => <div>{superBlock}</div>)}
+        {/* {challenges.map(superBlock => <div>{superBlock}</div>)} */}
       </div>
     );
   }
 }
 
 Map.propTypes = {
-  challenges: PropTypes.arrayOf(PropTypes.number).isRequired
+  challenges: PropTypes.objectOf(PropTypes.object).isRequired
 };
 
 const mapStateToProps = state => ({

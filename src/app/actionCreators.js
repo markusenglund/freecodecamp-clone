@@ -1,5 +1,4 @@
 import axios from "axios";
-import { setTimeout } from "timers";
 
 // export default function getSvgMap() {
 //   return dispatch => {
@@ -13,10 +12,9 @@ import { setTimeout } from "timers";
 // }
 
 const fetchMapData = () => dispatch => {
-  setTimeout(
-    () => dispatch({ type: "RECEIVE_MAP_DATA", payload: [1, 2, 3] }),
-    1000
-  );
+  axios.get("/public/assets/super-blocks.json").then(res => {
+    dispatch({ type: "RECEIVE_MAP_DATA", payload: res.data });
+  });
 };
 
 export { fetchMapData };

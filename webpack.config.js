@@ -1,5 +1,6 @@
 const path = require("path");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 const nodeExternals = require("webpack-node-externals");
 const autoprefixer = require("autoprefixer");
 
@@ -63,7 +64,15 @@ module.exports = [
         }
       ]
     },
-    plugins: [new ExtractTextPlugin("bundle.css")],
+    plugins: [
+      new ExtractTextPlugin("bundle.css"),
+      new CopyWebpackPlugin([
+        {
+          from: "src/app/assets/data",
+          to: "assets"
+        }
+      ])
+    ],
     resolve: {
       extensions: [".js", ".jsx"]
     }
