@@ -13,6 +13,15 @@ const map = (state = {}, action) => {
     case "RECEIVE_MAP_DATA": {
       return action.payload;
     }
+    case "TOGGLE_EXPANSION": {
+      return {
+        ...state,
+        [action.payload]: {
+          ...state[action.payload],
+          isOpen: !state[action.payload].isOpen
+        }
+      };
+    }
     default:
       return state;
   }

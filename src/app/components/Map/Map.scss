@@ -2,7 +2,25 @@
 
 .super-block-title,
 .block {
+  background: white;
   color: $green;
   font-size: 17px;
   font-weight: 700;
+  width: 100%;
+  border-width: 0px;
+  cursor: pointer;
+  outline: none;
+  text-align: left;
 }
+
+.super-block-title:hover,
+.super-block-title:focus,
+.block:hover,
+.block:focus {
+  text-decoration: underline;
+  color: $dark-green;
+}
+
+// .block-list {
+//   transition: all, 0.25s;
+// }
