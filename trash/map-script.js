@@ -52,6 +52,6 @@ const newSuperBlocks = Object.keys(superBlocks).reduce(
 );
 
 fs.writeFileSync(
-  "src/app/assets/data/super-blocks-mock.json",
+  "src/assets/data/super-blocks-mock.json",
   JSON.stringify(newSuperBlocks)
 );

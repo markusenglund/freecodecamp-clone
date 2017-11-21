@@ -68,7 +68,7 @@ module.exports = [
       new ExtractTextPlugin("bundle.css"),
       new CopyWebpackPlugin([
         {
-          from: "src/app/assets/data",
+          from: "src/assets/data",
           to: "assets"
         }
       ])

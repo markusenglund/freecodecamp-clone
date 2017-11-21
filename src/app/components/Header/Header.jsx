@@ -4,7 +4,7 @@ import { Link } from "redux-little-router";
 import { connect } from "react-redux";
 import "./Header.scss";
 import CommunityDropdown from "./CommunityDropdown";
-import logo from "../../assets/images/freecodecamp_logo.svg";
+import logo from "../../../assets/images/freecodecamp_logo.svg";
 
 class Header extends Component {
   toggleSidebarOpen = () => {
