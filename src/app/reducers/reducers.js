@@ -8,17 +8,45 @@ const counter = (state = 1, action) => {
   }
 };
 
+const sidebar = (state = { isOpen: false }, action) => {
+  switch (action.type) {
+    case "TOGGLE_SIDEBAR_OPEN": {
+      return { isOpen: !state.isOpen };
+    }
+    default:
+      return state;
+  }
+};
+
 const map = (state = {}, action) => {
   switch (action.type) {
     case "RECEIVE_MAP_DATA": {
       return action.payload;
     }
-    case "TOGGLE_EXPANSION": {
+    case "TOGGLE_SUPER_BLOCK_EXPANSION": {
+      const superBlockKey = action.payload;
       return {
         ...state,
-        [action.payload]: {
-          ...state[action.payload],
-          isOpen: !state[action.payload].isOpen
+        [superBlockKey]: {
+          ...state[superBlockKey],
+          isOpen: !state[superBlockKey].isOpen
+        }
+      };
+    }
+    case "TOGGLE_BLOCK_EXPANSION": {
+      const { blockKey, superBlockKey } = action.payload;
+      // This def causes mutations. Do I care?
+      return {
+        ...state,
+        [superBlockKey]: {
+          ...state[superBlockKey],
+          blocks: {
+            ...state[superBlockKey].blocks,
+            [blockKey]: {
+              ...state[superBlockKey].blocks[blockKey],
+              isOpen: !state[superBlockKey].blocks[blockKey].isOpen
+            }
+          }
         }
       };
     }
@@ -27,4 +55,4 @@ const map = (state = {}, action) => {
   }
 };
 
-export default { counter, map };
+export default { counter, map, sidebar };

@@ -12,7 +12,7 @@ import axios from "axios";
 // }
 
 const fetchMapData = () => dispatch => {
-  axios.get("/public/assets/super-blocks.json").then(res => {
+  axios.get("/public/assets/super-blocks-mock.json").then(res => {
     dispatch({ type: "RECEIVE_MAP_DATA", payload: res.data });
   });
 };
