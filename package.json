@@ -11,6 +11,7 @@
       "webpack -p --profile --json > stats.json && webpack-bundle-analyzer stats.json dist/public -s gzip",
     "lint": "eslint --ext .js,.jsx src/",
     "format": "prettier --write 'src/**/*.{js,jsx}'",
+    "start": "NODE_ENV=production node dist/server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Markus Englund <markus.s.englund@gmail.com>",

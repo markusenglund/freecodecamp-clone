@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Fragment, Link } from "redux-little-router";
+import { Fragment } from "redux-little-router";
 import PropTypes from "prop-types";
 import Sidebar from "react-sidebar";
 
 import "./App.scss";
 import Header from "./Header/Header";
 import Map from "./Map/Map";
+import Challenge from "./Challenge/Challenge";
 import { fetchMapData } from "../actionCreators";
 
 class App extends Component {
@@ -46,6 +47,9 @@ class App extends Component {
       >
         <div>
           <Header />
+          <Fragment forRoute="/challenge/:challenge">
+            <Challenge />
+          </Fragment>
         </div>
       </Sidebar>
     );

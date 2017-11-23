@@ -18,6 +18,28 @@ const sidebar = (state = { isOpen: false }, action) => {
   }
 };
 
+const challenges = (state = {}, action) => {
+  switch (action.type) {
+    case "FETCH_CHALLENGE": {
+      return {
+        ...state,
+        [action.challengeName]: {
+          ...state[action.challengeName],
+          isFetching: true
+        }
+      };
+    }
+    case "RECEIVE_CHALLENGE": {
+      return {
+        ...state,
+        [action.challengeName]: { ...action.challenge, isFetching: false }
+      };
+    }
+    default:
+      return state;
+  }
+};
+
 const map = (state = {}, action) => {
   switch (action.type) {
     case "RECEIVE_MAP_DATA": {
@@ -55,4 +77,4 @@ const map = (state = {}, action) => {
   }
 };
 
-export default { counter, map, sidebar };
+export default { sidebar, challenges, map };
