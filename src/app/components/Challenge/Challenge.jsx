@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { fetchChallenge } from "../../actionCreators";
+import IntroChallenge from "./IntroChallenge";
+import "./Challenge.scss";
 
 class Challenge extends Component {
   componentDidMount() {
@@ -20,6 +22,9 @@ class Challenge extends Component {
   render() {
     const { challenge } = this.props;
     if (Object.keys(challenge).length !== 0) {
+      if (challenge.challengeType === 7) {
+        return <IntroChallenge challenge={challenge} />;
+      }
       return <div>{challenge.description}</div>;
     }
     return <div>SPINNER</div>;
