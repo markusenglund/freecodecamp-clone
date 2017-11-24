@@ -1,3 +1,46 @@
-.info-image {
-  width: 80vw;
+@import "../../variables.scss";
+
+.intro-challenge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.intro-image {
+  width: 75%;
+  max-width: 1280px;
+}
+.intro-challenge p {
+  font-size: 22px;
+  color: $dark-text;
+}
+.intro-text {
+  width: 95%;
+  max-width: 600px;
+}
+
+.intro-button {
+  background: white;
+  color: $green;
+  border: 1px $darker-green solid;
+  width: 280px;
+  height: 60px;
+  border-radius: 6px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.intro-button:hover,
+.intro-button:focus {
+  background: $green;
+  color: $text-grey;
+}
+
+@media all and (max-width: 900px) {
+  .intro-image {
+    width: 95%;
+  }
+  // .intro-text {
+  //   width: 80%;
+  // }
 }

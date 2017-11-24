@@ -11,16 +11,22 @@ class IntroChallenge extends Component {
     const { description } = this.props.challenge;
     const { page } = this.state;
     return (
-      <div>
+      <div className="intro-challenge">
         <img
           src={description[page][0]}
           alt={description[page][1]}
-          className="info-image"
+          className="intro-image"
         />
-        <h2>{description[page][2]}</h2>
-        <button onClick={() => this.setState({ page: this.state.page + 1 })}>
-          Go to the next stuff
+        <p className="intro-text">{description[page][2]}</p>
+        {/* <div className="intro-navigation"> */}
+        <button
+          className="intro-button"
+          onClick={() => this.setState({ page: this.state.page + 1 })}
+        >
+          Go to my next step
         </button>
+        <p>{`( ${this.state.page + 1} / ${description.length} )`}</p>
+        {/* </div> */}
       </div>
     );
   }
