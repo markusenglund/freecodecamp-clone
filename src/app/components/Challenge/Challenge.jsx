@@ -34,7 +34,7 @@ class Challenge extends Component {
 Challenge.propTypes = {
   dispatch: PropTypes.func.isRequired,
   challengeName: PropTypes.string.isRequired,
-  challenge: PropTypes.object.isRequired
+  challenge: PropTypes.shape({ description: PropTypes.array }).isRequired
 };
 
 const mapStateToProps = state => {
