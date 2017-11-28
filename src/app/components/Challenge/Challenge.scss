@@ -1,18 +1,12 @@
 @import "../../variables.scss";
 
 .intro-challenge {
-  // float: left;
-  // display: inline-block;
-  // float: left;
   display: flex;
-  // overflow-y: hidden;
-  // width: 100%;
-  // height: 100%;
-  // position: relative;
 }
 
 .intro-challenge-page {
   // float: left;
+  outline: none;
   display: flex;
   flex-direction: column;
   align-items: center;

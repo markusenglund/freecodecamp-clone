@@ -47,16 +47,18 @@ class IntroChallenge extends Component {
           }}
         >
           <img src={imageSrc} alt={imageAlt} className="intro-image" />
-          <p className="intro-text">{infoText}</p>
+          <p className="intro-text">
+            {infoText.replace(/<bold>|<\/bold>/g, "")}
+          </p>
           <div>
-            {pageIndex !== 0 ? (
+            {pageIndex !== 0 && (
               <button
                 className="intro-button"
                 onClick={() => this.changePage(pageIndex - 1)}
               >
                 Go to my previous step
               </button>
-            ) : null}
+            )}
             {pageIndex !== description.length - 1 ? (
               <button
                 className="intro-button"

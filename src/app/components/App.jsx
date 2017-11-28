@@ -30,6 +30,9 @@ class App extends Component {
         onSetOpen={this.onSetSidebarOpen}
         pullRight
         styles={{
+          content: {
+            overflowY: "auto"
+          },
           overlay: {
             zIndex: 1,
             position: "relative",
