@@ -5,19 +5,17 @@
 }
 
 .intro-challenge-page {
-  // float: left;
   outline: none;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  // position: absolute;
   width: 100%;
   box-sizing: border-box;
 }
 
 .intro-image {
-  width: 75%;
+  width: 65%;
   max-width: 1280px;
 }
 .intro-challenge p {
@@ -27,6 +25,13 @@
 .intro-text {
   width: 100%;
   max-width: 600px;
+}
+
+.intro-button-collection {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
 }
 
 .intro-button {
@@ -42,6 +47,8 @@
   outline: none;
   margin-left: 40px;
   margin-right: 40px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .intro-button:hover,
 .intro-button:focus {
@@ -53,9 +60,11 @@
   .intro-image {
     width: 100%;
   }
-  // .intro-text {
-  //   width: 80%;
-  // }
+
+  .intro-button {
+    width: 100%;
+    margin: 10px;
+  }
 }
 
 .invisible-image {

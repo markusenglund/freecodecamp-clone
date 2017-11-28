@@ -50,7 +50,7 @@ class IntroChallenge extends Component {
           <p className="intro-text">
             {infoText.replace(/<bold>|<\/bold>/g, "")}
           </p>
-          <div>
+          <div className="intro-button-collection">
             {pageIndex !== 0 && (
               <button
                 className="intro-button"
