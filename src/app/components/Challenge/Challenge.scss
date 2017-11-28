@@ -1,10 +1,10 @@
 @import "../../variables.scss";
 
-.intro-challenge {
+.info-challenge {
   display: flex;
 }
 
-.intro-challenge-page {
+.info-challenge-page {
   outline: none;
   display: flex;
   flex-direction: column;
@@ -14,15 +14,15 @@
   box-sizing: border-box;
 }
 
-.intro-image {
+.info-challenge-image {
   width: 65%;
   max-width: 1280px;
 }
-.intro-challenge p {
+.info-challenge-page p {
   font-size: 22px;
   color: $dark-text;
 }
-.intro-text {
+.info-challenge-text {
   margin-top: 10px;
   width: 100%;
   max-width: 600px;
@@ -34,14 +34,14 @@
   }
 }
 
-.intro-button-collection {
+.info-challenge-button-collection {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   width: 100%;
 }
 
-.intro-button {
+.info-challenge-button {
   background: white;
   color: $green;
   border: 1px $darker-green solid;
@@ -55,20 +55,20 @@
   margin-top: 10px;
   margin-bottom: 10px;
 }
-.intro-button:hover,
-.intro-button:focus {
+.info-challenge-button:hover,
+.info-challenge-button:focus {
   background: $green;
   color: $text-grey;
 }
 
-.intro-button:disabled {
+.info-challenge-button:disabled {
   opacity: 0.5;
   background: $green;
   color: $text-grey;
   cursor: default;
 }
 
-.intro-button-a {
+.info-challenge-button-a {
   width: 60%;
   display: flex;
   align-items: center;
@@ -77,11 +77,11 @@
 }
 
 @media all and (max-width: 900px) {
-  .intro-image {
+  .info-challenge-image {
     width: 100%;
   }
 
-  .intro-button {
+  .info-challenge-button {
     width: 100%;
     margin-left: 0px;
     margin-right: 0px;
