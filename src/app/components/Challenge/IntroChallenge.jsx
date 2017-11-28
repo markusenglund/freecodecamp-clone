@@ -12,7 +12,7 @@ import { finishChallenge } from "../../actionCreators";
 class IntroChallenge extends Component {
   constructor() {
     super();
-    this.state = { pageIndex: 0 };
+    this.state = { pageIndex: 0, hasLinkBeenOpened: false };
   }
 
   componentDidUpdate() {
@@ -29,13 +29,13 @@ class IntroChallenge extends Component {
   };
 
   changePage = pageIndex => {
-    this.setState({ pageIndex });
+    this.setState({ pageIndex, hasLinkBeenOpened: false });
   };
 
   render() {
     // const { page, pageIndex, length, changePage, name, dispatch } = this.props;
     const { description } = this.props.challenge;
-    const { pageIndex } = this.state;
+    const { pageIndex, hasLinkBeenOpened } = this.state;
     const [imageSrc, imageAlt, infoText, linkHref] = description[pageIndex];
     return (
       <div className="intro-challenge">
@@ -55,6 +55,7 @@ class IntroChallenge extends Component {
             <a
               href={linkHref}
               className="intro-button intro-button-a"
+              onClick={() => this.setState({ hasLinkBeenOpened: true })}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -72,6 +73,7 @@ class IntroChallenge extends Component {
             )}
             {pageIndex !== description.length - 1 ? (
               <button
+                disabled={!hasLinkBeenOpened && linkHref}
                 className="intro-button"
                 onClick={() => this.changePage(pageIndex + 1)}
               >

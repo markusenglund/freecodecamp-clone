@@ -62,6 +62,13 @@
   color: $text-grey;
 }
 
+.intro-button:disabled {
+  opacity: 0.5;
+  background: $green;
+  color: $text-grey;
+  cursor: default;
+}
+
 .intro-button-a {
   width: 60%;
   display: flex;
