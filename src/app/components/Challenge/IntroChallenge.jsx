@@ -48,21 +48,31 @@ class IntroChallenge extends Component {
         >
           <img src={imageSrc} alt={imageAlt} className="intro-image" />
           <p className="intro-text">{infoText}</p>
-          {pageIndex !== description.length - 1 ? (
-            <button
-              className="intro-button"
-              onClick={() => this.changePage(pageIndex + 1)}
-            >
-              Go to my next step
-            </button>
-          ) : (
-            <button className="intro-button" onClick={this.handleFinishClick}>
-              Finish challenge
-            </button>
-          )}
+          <div>
+            {pageIndex !== 0 ? (
+              <button
+                className="intro-button"
+                onClick={() => this.changePage(pageIndex - 1)}
+              >
+                Go to my previous step
+              </button>
+            ) : null}
+            {pageIndex !== description.length - 1 ? (
+              <button
+                className="intro-button"
+                onClick={() => this.changePage(pageIndex + 1)}
+              >
+                Go to my next step
+              </button>
+            ) : (
+              <button className="intro-button" onClick={this.handleFinishClick}>
+                Finish challenge
+              </button>
+            )}
+          </div>
+          <p>{`( ${pageIndex + 1} / ${description.length} )`}</p>
         </div>
 
-        <p>{`( ${pageIndex + 1} / ${description.length} )`}</p>
         <InvisibleImages images={description.map(page => [page[0], page[1]])} />
       </div>
     );
@@ -78,6 +88,7 @@ IntroChallenge.propTypes = {
 };
 
 const mapStateToProps = state => {
+  // FIXME: The structure of challenge state doesn't make much sense and has created this madness
   const currentChallengeName = state.router.pathname.split("/")[2];
   const challenge = state.challenges[currentChallengeName];
   let nextChallenge = "";
