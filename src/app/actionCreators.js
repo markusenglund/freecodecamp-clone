@@ -10,7 +10,11 @@ export const fetchChallenge = challengeName => dispatch => {
   // TODO: Add logic for aborting fetch when challenge is already fetched or is fetching
   dispatch({ type: "FETCH_CHALLENGE", challengeName });
   axios.get(`/api/challenge/${challengeName}`).then(res => {
-    console.log(res);
     dispatch({ type: "RECEIVE_CHALLENGE", challengeName, challenge: res.data });
   });
+};
+
+export const finishChallenge = challenge => dispatch => {
+  // Make a server call to tell it that we're finished to it gets put into the db
+  dispatch({ type: "FINISH_CHALLENGE", challengeName: challenge.dashedName });
 };

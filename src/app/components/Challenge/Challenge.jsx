@@ -23,7 +23,7 @@ class Challenge extends Component {
     const { challenge } = this.props;
     if (Object.keys(challenge).length !== 0) {
       if (challenge.challengeType === 7) {
-        return <IntroChallenge challenge={challenge} />;
+        return <IntroChallenge />;
       }
       return <div>{challenge.description}</div>;
     }
