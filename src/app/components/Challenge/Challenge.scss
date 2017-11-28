@@ -23,6 +23,7 @@
   color: $dark-text;
 }
 .intro-text {
+  margin-top: 10px;
   width: 100%;
   max-width: 600px;
   font-size: 22px;
@@ -51,8 +52,6 @@
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
   outline: none;
-  margin-left: 40px;
-  margin-right: 40px;
   margin-top: 10px;
   margin-bottom: 10px;
 }

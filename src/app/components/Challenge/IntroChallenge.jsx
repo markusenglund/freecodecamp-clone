@@ -4,10 +4,7 @@ import { connect } from "react-redux";
 import { push } from "redux-little-router";
 
 import InvisibleImages from "./InvisibleImages";
-
 import { finishChallenge } from "../../actionCreators";
-
-// import { fetchChallenge } from "../../actionCreators";
 
 class IntroChallenge extends Component {
   constructor() {
@@ -33,7 +30,6 @@ class IntroChallenge extends Component {
   };
 
   render() {
-    // const { page, pageIndex, length, changePage, name, dispatch } = this.props;
     const { description } = this.props.challenge;
     const { pageIndex, hasLinkBeenOpened } = this.state;
     const [imageSrc, imageAlt, infoText, linkHref] = description[pageIndex];
@@ -99,7 +95,8 @@ IntroChallenge.propTypes = {
     description: PropTypes.array,
     dashedName: PropTypes.string
   }).isRequired,
-  nextChallenge: PropTypes.string.isRequired
+  nextChallenge: PropTypes.string.isRequired,
+  dispatch: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => {
