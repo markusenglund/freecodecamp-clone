@@ -36,7 +36,7 @@ class IntroChallenge extends Component {
     // const { page, pageIndex, length, changePage, name, dispatch } = this.props;
     const { description } = this.props.challenge;
     const { pageIndex } = this.state;
-    const [imageSrc, imageAlt, infoText] = description[pageIndex];
+    const [imageSrc, imageAlt, infoText, linkHref] = description[pageIndex];
     return (
       <div className="intro-challenge">
         <div
@@ -47,9 +47,20 @@ class IntroChallenge extends Component {
           }}
         >
           <img src={imageSrc} alt={imageAlt} className="intro-image" />
-          <p className="intro-text">
-            {infoText.replace(/<bold>|<\/bold>/g, "")}
-          </p>
+          <div
+            className="intro-text"
+            dangerouslySetInnerHTML={{ __html: infoText }}
+          />
+          {linkHref && (
+            <a
+              href={linkHref}
+              className="intro-button intro-button-a"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Open link in new tab (this unlocks the next step)
+            </a>
+          )}
           <div className="intro-button-collection">
             {pageIndex !== 0 && (
               <button
