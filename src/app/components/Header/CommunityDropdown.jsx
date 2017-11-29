@@ -10,6 +10,7 @@ class CommunityDropdown extends Component {
   render() {
     return (
       <Wrapper
+        style={{ zIndex: 1 }}
         onSelection={() => {}}
         onMenuToggle={({ isOpen }) => {
           this.setState({ isOpen });
@@ -26,7 +27,7 @@ class CommunityDropdown extends Component {
             className="dropdown-item"
             tag="a"
             href="https://gitter.im/freecodecamp/home"
-            // target="_blank"
+            target="_blank"
             rel="noopener noreferrer"
           >
             Chat
