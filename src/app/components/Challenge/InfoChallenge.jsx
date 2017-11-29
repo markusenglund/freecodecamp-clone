@@ -36,7 +36,7 @@ class InfoChallenge extends Component {
     return (
       <div
         tabIndex={-1}
-        className="info-challenge-page"
+        className="info-challenge"
         ref={n => {
           this.node = n;
         }}
