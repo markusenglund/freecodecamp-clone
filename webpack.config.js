@@ -19,10 +19,7 @@ module.exports = [
         {
           test: /\.(js|jsx)$/,
           use: {
-            loader: "babel-loader",
-            options: {
-              presets: ["env", "stage-2", "react"]
-            }
+            loader: "babel-loader"
           },
           exclude: /node_modules/
         },
@@ -92,10 +89,7 @@ module.exports = [
         {
           test: /\.(js|jsx)$/,
           use: {
-            loader: "babel-loader",
-            options: {
-              presets: ["env", "stage-2", "react"]
-            }
+            loader: "babel-loader"
           },
           exclude: /node_modules/
         },
