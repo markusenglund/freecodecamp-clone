@@ -1,0 +1,17 @@
+@import "../../variables.scss";
+
+.dom-challenge-description {
+  width: 30%;
+  color: $dark-text;
+  font-size: 17px;
+
+  code {
+    background: $bg-grey;
+    color: #c7254e;
+    font-size: 14px;
+    padding: 1px;
+  }
+  > * {
+    margin: 14px;
+  }
+}

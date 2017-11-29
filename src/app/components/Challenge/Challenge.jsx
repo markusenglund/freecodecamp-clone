@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { fetchChallenge } from "../../actionCreators";
 import InfoChallenge from "./InfoChallenge";
+import DomChallenge from "./DomChallenge";
 import "./Challenge.scss";
 
 class Challenge extends Component {
@@ -24,6 +25,9 @@ class Challenge extends Component {
     if (Object.keys(challenge).length !== 0) {
       if (challenge.challengeType === 7) {
         return <InfoChallenge />;
+      }
+      if (challenge.challengeType === 0) {
+        return <DomChallenge />;
       }
       return <div>{challenge.description}</div>;
     }

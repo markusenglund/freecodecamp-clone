@@ -41,7 +41,9 @@ class InfoChallenge extends Component {
           this.node = n;
         }}
       >
-        <img src={imageSrc} alt={imageAlt} className="info-challenge-image" />
+        {imageSrc && (
+          <img src={imageSrc} alt={imageAlt} className="info-challenge-image" />
+        )}
         <div
           className="info-challenge-text"
           dangerouslySetInnerHTML={{ __html: infoText }}
