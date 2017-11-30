@@ -1,5 +1,9 @@
 @import "../../variables.scss";
 
+.dom-challenge {
+  display: flex;
+}
+
 .dom-challenge-description {
   width: 30%;
   color: $dark-text;

@@ -17,11 +17,13 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.17.1",
+    "codemirror": "^5.32.0",
     "compression": "^1.7.1",
     "express": "^4.16.2",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-aria-menubutton": "github:yogaboll/react-aria-menubutton",
+    "react-codemirror": "^1.0.0",
     "react-dom": "^16.2.0",
     "react-icons": "^2.2.7",
     "react-redux": "^5.0.6",
