@@ -10,36 +10,14 @@ if (process.browser) {
 }
 
 class DomChallenge extends Component {
-  constructor() {
-    super();
-    this.state = { code: "// Start coding!" };
-  }
-
-  updateCode = code => {
-    this.setState({ code });
-  };
-  /*
-  fcc options:
-    lint: {
-    esversion: 6,
-    predef: envProps
-  },
-  lineNumbers: true,
-  mode: 'javascript',
-  runnable: true,
-  matchBrackets: true,
-  autoCloseBrackets: true,
-  scrollbarStyle: 'null',
-  lineWrapping: true,
-  gutters: [ 'CodeMirror-lint-markers' ]
-  */
   render() {
+    const { updateCode, code } = this.props;
     return (
       <div className="challenge-editor-wrapper">
         <h1>Editor</h1>
         <CodeMirror
-          value={this.state.code}
-          onChange={this.updateCode}
+          value={code}
+          onChange={updateCode}
           options={{
             lineNumbers: true,
             lineWrapping: true,
@@ -53,12 +31,10 @@ class DomChallenge extends Component {
   }
 }
 
-// DomChallenge.propTypes = {
-//   challenge: PropTypes.shape({
-//     description: PropTypes.arrayOf(PropTypes.string),
-//     name: PropTypes.string
-//   }).isRequired
-// };
+DomChallenge.propTypes = {
+  updateCode: PropTypes.func.isRequired,
+  code: PropTypes.string.isRequired
+};
 
 // const mapStateToProps = state => {
 //   const currentChallengeName = state.router.pathname.split("/")[2];
