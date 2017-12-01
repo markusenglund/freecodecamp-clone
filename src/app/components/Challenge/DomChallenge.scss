@@ -47,13 +47,27 @@
 }
 
 .challenge-editor-wrapper {
-  width: 45%;
-}
-
-.challenge-editor {
   width: 100%;
 }
 
+.challenge-editor {
+  height: 100%;
+  width: 45%;
+  overflow: auto;
+  padding: 10px;
+  box-sizing: border-box;
+
+  .CodeMirror {
+    height: 100%;
+    border-radius: 5px;
+  }
+}
+
 .challenge-preview {
+  height: 100%;
   width: 30%;
+  overflow: auto;
+
+  padding: 10px;
+  box-sizing: border-box;
 }

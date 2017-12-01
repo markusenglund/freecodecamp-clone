@@ -7,7 +7,6 @@ class Preview extends Component {
     const { code } = this.props;
     return (
       <div className="challenge-preview">
-        <h1>Preview</h1>
         <div dangerouslySetInnerHTML={{ __html: code }} />
       </div>
     );

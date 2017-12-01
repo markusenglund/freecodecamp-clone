@@ -13,20 +13,17 @@ class DomChallenge extends Component {
   render() {
     const { updateCode, code } = this.props;
     return (
-      <div className="challenge-editor-wrapper">
-        <h1>Editor</h1>
-        <CodeMirror
-          value={code}
-          onChange={updateCode}
-          options={{
-            lineNumbers: true,
-            lineWrapping: true,
-            theme: "monokai",
-            mode: "htmlmixed"
-          }}
-          className="challenge-editor"
-        />
-      </div>
+      <CodeMirror
+        value={code}
+        onChange={updateCode}
+        options={{
+          lineNumbers: true,
+          lineWrapping: true,
+          theme: "monokai",
+          mode: "htmlmixed"
+        }}
+        className="challenge-editor"
+      />
     );
   }
 }

@@ -22,14 +22,12 @@ class DomChallenge extends Component {
       <div className="dom-challenge">
         <div className="dom-challenge-description">
           <h1 className="dom-challenge-name">{name}</h1>
-          <div>
-            {description.map((descriptionHtml, i) => (
-              <div
-                key={i}
-                dangerouslySetInnerHTML={{ __html: descriptionHtml }}
-              />
-            ))}
-          </div>
+          {description.map((descriptionHtml, i) => (
+            <div
+              key={i}
+              dangerouslySetInnerHTML={{ __html: descriptionHtml }}
+            />
+          ))}
           <button className="dom-challenge-button">
             Run tests (Ctrl + Enter)
           </button>
