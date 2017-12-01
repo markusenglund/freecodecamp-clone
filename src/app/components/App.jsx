@@ -48,7 +48,7 @@ class App extends Component {
         }}
         sidebarClassName="sidebar"
       >
-        <div>
+        <div className="main-content">
           <Header />
           <Fragment forRoute="/challenge/:challenge">
             <Challenge />

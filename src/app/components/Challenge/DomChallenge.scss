@@ -2,12 +2,15 @@
 
 .dom-challenge {
   display: flex;
+  height: 100%;
 }
 
 .dom-challenge-description {
-  width: 30%;
+  width: 25%;
+  height: 100%;
   color: $dark-text;
   font-size: 17px;
+  overflow: auto;
 
   code {
     background: $bg-grey;
@@ -44,7 +47,7 @@
 }
 
 .challenge-editor-wrapper {
-  width: 100%;
+  width: 45%;
 }
 
 .challenge-editor {
@@ -52,6 +55,5 @@
 }
 
 .challenge-preview {
-  width: 33%;
-  border: 1px solid black;
+  width: 30%;
 }
