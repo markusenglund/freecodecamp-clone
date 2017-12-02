@@ -17,9 +17,11 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.17.1",
+    "chai": "^4.1.2",
     "codemirror": "^5.32.0",
     "compression": "^1.7.1",
     "express": "^4.16.2",
+    "jquery": "^3.2.1",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-aria-menubutton": "github:yogaboll/react-aria-menubutton",
