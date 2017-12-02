@@ -8,7 +8,15 @@ const challenges = json.data.entities.challenge;
 
 router.get("/challenge/:challenge", (req, res) => {
   const challenge = challenges[req.params.challenge];
-  res.send(challenge);
+  const newTests = challenge.tests.map(test => {
+    if (typeof test !== "string") {
+      return test;
+    }
+    // Get the text between 'message:  and '
+    const text = test.split("'message: ")[1].split("'")[0];
+    return { testString: test, text };
+  });
+  res.send({ ...challenge, tests: newTests });
 });
 
 export default router;

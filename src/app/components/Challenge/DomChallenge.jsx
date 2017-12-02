@@ -13,9 +13,7 @@ class DomChallenge extends Component {
     super(props);
     const { challenge } = this.props;
     this.state = {
-      code: challenge.challengeSeed[0],
-      error: null,
-      testsPassed: false
+      code: challenge.challengeSeed[0]
     };
   }
 
@@ -24,26 +22,38 @@ class DomChallenge extends Component {
   };
 
   testCode = () => {
-    // const { code } = this.state;
-    const { tests } = this.props.challenge;
+    const { dispatch, challenge, challengeName } = this.props;
+    const { tests } = challenge;
     /* eslint-disable no-unused-vars */
+    const { code } = this.state;
     const { assert } = chai;
     const $ = jquery;
     /* eslint-enable no-unused-vars */
 
-    try {
-      tests.forEach(test => {
-        // console.log(test.text, test.testString, code);
-        eval(test.testString);
-        this.setState({ testsPassed: true });
-      });
-    } catch (e) {
-      this.setState({ error: e });
+    // TODO: Make a temp array of the status (pass or fail) for each test, then submit action when it's all said and done.
+    const testStatuses = [];
+    for (let i = 0; i < tests.length; i += 1) {
+      try {
+        /* eslint-disable no-eval */
+        eval(tests[i].testString);
+        testStatuses[i] = true;
+      } catch (e) {
+        /* eslint-enable no-eval */
+        testStatuses[i] = false;
+      }
     }
+    // TODO: Submit action to make challenge.tests have hasPassed value
+    dispatch({
+      type: "TEST_CHALLENGE_CODE",
+      testStatuses,
+      challenge,
+      challengeName
+    });
   };
 
   render() {
-    const { description, name } = this.props.challenge;
+    const { description, name, tests } = this.props.challenge;
+    /* eslint-disable react/no-danger */
     return (
       <div className="dom-challenge">
         <div className="dom-challenge-description">
@@ -59,13 +69,20 @@ class DomChallenge extends Component {
           </button>
           <h2>Test-stuff incomplete</h2>
           {this.state.testsPassed && "The tests have motherfucking passed"}
-          <div dangerouslySetInnerHTML={{ __html: this.state.error }} />
-          {/* <div>{tests.map(test => <div>{test}</div>)}</div> */}
+          <div>
+            {tests.map(test => (
+              <div key={test.text}>
+                <div dangerouslySetInnerHTML={{ __html: test.text }} />
+                <span>{test.hasPassed ? "GOOD" : "BAD"}</span>
+              </div>
+            ))}
+          </div>
         </div>
         <Editor code={this.state.code} updateCode={this.updateCode} />
         <Preview code={this.state.code} />
       </div>
     );
+    /* eslint-enable react/no-danger */
   }
 }
 
@@ -74,14 +91,15 @@ DomChallenge.propTypes = {
     description: PropTypes.arrayOf(PropTypes.string),
     name: PropTypes.string,
     tests: PropTypes.arrayOf(PropTypes.object)
-    // tests: PropTypes.arrayOf(PropTypes.string)
-  }).isRequired
+  }).isRequired,
+  challengeName: PropTypes.string.isRequired,
+  dispatch: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => {
-  const currentChallengeName = state.router.pathname.split("/")[2];
-  const challenge = state.challenges[currentChallengeName];
-  return { challenge };
+  const challengeName = state.router.pathname.split("/")[2];
+  const challenge = state.challenges[challengeName];
+  return { challenge, challengeName };
 };
 
 export default connect(mapStateToProps)(DomChallenge);

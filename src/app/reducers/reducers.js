@@ -35,6 +35,18 @@ const challenges = (state = {}, action) => {
         [action.challengeName]: { ...action.challenge, isFetching: false }
       };
     }
+    case "TEST_CHALLENGE_CODE": {
+      return {
+        ...state,
+        [action.challengeName]: {
+          ...action.challenge,
+          tests: action.challenge.tests.map((test, i) => ({
+            ...test,
+            hasPassed: action.testStatuses[i]
+          }))
+        }
+      };
+    }
     default:
       return state;
   }

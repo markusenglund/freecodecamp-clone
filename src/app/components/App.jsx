@@ -33,6 +33,9 @@ class App extends Component {
           content: {
             overflowY: "auto"
           },
+          sidebar: {
+            zIndex: 10
+          },
           overlay: {
             zIndex: 1,
             position: "relative",
