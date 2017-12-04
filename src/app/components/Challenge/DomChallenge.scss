@@ -46,6 +46,27 @@
   }
 }
 
+.challenge-test {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.test-icon-pass,
+.test-icon-fail {
+  font-size: 30px;
+  margin-right: 5px;
+}
+
+.test-icon-pass {
+  fill: $green;
+}
+
+.test-icon-fail {
+  fill: #d9534f;
+}
+
 .challenge-editor-wrapper {
   width: 100%;
 }

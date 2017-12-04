@@ -2,8 +2,11 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-import /* { assert } */ chai from "chai";
+import chai from "chai";
 import jquery from "jquery";
+import FaCheckCircle from "react-icons/lib/fa/check-circle";
+import FaTimesCircle from "react-icons/lib/fa/times-circle";
+
 import Editor from "./Editor";
 import Preview from "./Preview";
 import "./DomChallenge.scss";
@@ -67,13 +70,19 @@ class DomChallenge extends Component {
           <button className="dom-challenge-button" onClick={this.testCode}>
             Run tests (Ctrl + Enter)
           </button>
-          <h2>Test-stuff incomplete</h2>
+          <h3>Test-stuff incomplete</h3>
           {this.state.testsPassed && "The tests have motherfucking passed"}
           <div>
             {tests.map(test => (
-              <div key={test.text}>
+              <div className="challenge-test" key={test.text}>
+                <div>
+                  {test.hasPassed ? (
+                    <FaCheckCircle className="test-icon-pass" />
+                  ) : (
+                    <FaTimesCircle className="test-icon-fail" />
+                  )}
+                </div>
                 <div dangerouslySetInnerHTML={{ __html: test.text }} />
-                <span>{test.hasPassed ? "GOOD" : "BAD"}</span>
               </div>
             ))}
           </div>
