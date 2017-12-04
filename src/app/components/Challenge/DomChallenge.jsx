@@ -67,9 +67,11 @@ class DomChallenge extends Component {
               dangerouslySetInnerHTML={{ __html: descriptionHtml }}
             />
           ))}
-          <button className="dom-challenge-button" onClick={this.testCode}>
-            Run tests (Ctrl + Enter)
-          </button>
+          <div className="dom-challenge-button-wrapper">
+            <button className="dom-challenge-button" onClick={this.testCode}>
+              Run tests (Ctrl + Enter)
+            </button>
+          </div>
           <h3>Test-stuff incomplete</h3>
           {this.state.testsPassed && "The tests have motherfucking passed"}
           <div>
