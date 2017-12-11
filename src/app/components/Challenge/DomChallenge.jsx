@@ -9,6 +9,7 @@ import FaTimesCircle from "react-icons/lib/fa/times-circle";
 
 import Editor from "./Editor";
 import Preview from "./Preview";
+import SuccessModal from "./SuccessModal";
 import "./DomChallenge.scss";
 
 class DomChallenge extends Component {
@@ -91,6 +92,7 @@ class DomChallenge extends Component {
         </div>
         <Editor code={this.state.code} updateCode={this.updateCode} />
         <Preview code={this.state.code} />
+        <SuccessModal />
       </div>
     );
     /* eslint-enable react/no-danger */
