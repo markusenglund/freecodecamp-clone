@@ -17,7 +17,8 @@ class DomChallenge extends Component {
     super(props);
     const { challenge } = this.props;
     this.state = {
-      code: challenge.challengeSeed[0]
+      code: challenge.challengeSeed[0],
+      modalIsOpen: false
     };
   }
 
@@ -28,6 +29,7 @@ class DomChallenge extends Component {
   testCode = () => {
     const { dispatch, challenge, challengeName } = this.props;
     const { tests } = challenge;
+    // These variables are needed to eval the test strings.
     /* eslint-disable no-unused-vars */
     const { code } = this.state;
     const { assert } = chai;
@@ -53,6 +55,14 @@ class DomChallenge extends Component {
       challenge,
       challengeName
     });
+
+    if (testStatuses.every(test => test)) {
+      this.setState({ modalIsOpen: true });
+    }
+  };
+
+  closeModal = () => {
+    this.setState({ modalIsOpen: false });
   };
 
   render() {
@@ -92,7 +102,10 @@ class DomChallenge extends Component {
         </div>
         <Editor code={this.state.code} updateCode={this.updateCode} />
         <Preview code={this.state.code} />
-        <SuccessModal />
+        <SuccessModal
+          isOpen={this.state.modalIsOpen}
+          closeModal={this.closeModal}
+        />
       </div>
     );
     /* eslint-enable react/no-danger */

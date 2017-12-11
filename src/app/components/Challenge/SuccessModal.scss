@@ -1,12 +1,13 @@
+@import "../../variables.scss";
+
 .success-modal {
   width: 80%;
   max-width: 540px;
   height: 320px;
-  border: 1px solid #ccc;
   background: #fff;
   border-radius: 4px;
   outline: none;
-  padding: 20px;
+  // padding: 20px;
   // overflow: auto;
   // -webkit-overflow-scrolling: touch;
 }
@@ -22,4 +23,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.success-modal-header {
+  background: $green;
+  display: flex;
+  justify-content: center;
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+
+  div {
+    font-size: 28px;
+    color: $text-grey;
+    margin: 12px 0px 8px 0px;
+  }
 }

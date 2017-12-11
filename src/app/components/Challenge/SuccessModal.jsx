@@ -6,29 +6,39 @@ import "./SuccessModal.scss";
 
 class SuccessModal extends Component {
   render() {
+    const { isOpen, closeModal } = this.props;
     return (
       <Modal
+        // isOpen={isOpen}
         isOpen
+        onRequestClose={closeModal}
         contentLabel="Tests have passed"
         className="success-modal"
         overlayClassName="success-modal-overlay"
       >
-        <div>
-          <h1>ITs a modal what is up</h1>
-          <p>ASDASDASD</p>
-        </div>
+        <>
+          <div className="success-modal-header">
+            <div>Good job!</div>
+          </div>
+          <button className="info-challenge-button">
+            Submit and go to my next challenge
+          </button>
+        </>
       </Modal>
     );
   }
 }
 
-// SuccessModal.propTypes = {
-//   updateCode: PropTypes.func.isRequired,
-//   code: PropTypes.string.isRequired
+SuccessModal.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  closeModal: PropTypes.func.isRequired
+};
+
+// const mapStateToProps = state => {
+//   const challengeName = state.router.pathname.split("/")[2];
+//   const challenge = state.challenges[challengeName];
+//   const testsHavePassed = challenge.tests.every(test => test.hasPassed);
+//   return { testsHavePassed };
 // };
 
 export default connect()(SuccessModal);
-
-function asdf() {
-  console.log("asdf");
-}
