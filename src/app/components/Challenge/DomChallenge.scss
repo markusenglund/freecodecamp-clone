@@ -30,22 +30,7 @@
     justify-content: center;
   }
   .dom-challenge-button {
-    background: white;
-    color: $green;
-    border: 1px $darker-green solid;
-    border-radius: 6px;
-    font-size: 20px;
-    cursor: pointer;
-    transition: background 0.2s, color 0.2s;
-    outline: none;
-    box-sizing: border-box;
-    padding: 10px;
     width: 100%;
-  }
-  .dom-challenge-button:hover,
-  .dom-challenge-button:focus {
-    background: $green;
-    color: $text-grey;
   }
   > * {
     margin: 14px;

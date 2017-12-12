@@ -35,33 +35,14 @@
   flex-wrap: wrap;
   justify-content: space-around;
   width: 100%;
+  flex-shrink: 0;
 }
 
 .info-challenge-button {
-  background: white;
-  color: $green;
-  border: 1px $darker-green solid;
   width: 280px;
   height: 60px;
-  border-radius: 6px;
-  font-size: 20px;
-  cursor: pointer;
-  transition: background 0.2s, color 0.2s;
-  outline: none;
   margin-top: 10px;
   margin-bottom: 10px;
-}
-.info-challenge-button:hover,
-.info-challenge-button:focus {
-  background: $green;
-  color: $text-grey;
-}
-
-.info-challenge-button:disabled {
-  opacity: 0.5;
-  background: $green;
-  color: $text-grey;
-  cursor: default;
 }
 
 .info-challenge-button-a {

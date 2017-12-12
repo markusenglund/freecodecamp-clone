@@ -3,13 +3,11 @@
 .success-modal {
   width: 80%;
   max-width: 600px;
-  // height: 320px;
   background: #fff;
   border-radius: 4px;
   outline: none;
-  // padding: 20px;
-  // overflow: auto;
-  // -webkit-overflow-scrolling: touch;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.5);
 }
 

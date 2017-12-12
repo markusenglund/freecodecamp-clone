@@ -5,6 +5,7 @@ import { push } from "redux-little-router";
 
 import InvisibleImages from "./InvisibleImages";
 import { finishChallenge } from "../../actionCreators";
+import { getNextChallengeName } from "../../selectors/challengeSelectors";
 
 class InfoChallenge extends Component {
   constructor() {
@@ -19,11 +20,10 @@ class InfoChallenge extends Component {
   }
 
   handleFinishClick = () => {
-    //Change nextChallenge to nextChallengeName
-    const { dispatch, challenge, nextChallenge } = this.props;
+    const { dispatch, challenge, nextChallengeName } = this.props;
 
     dispatch(finishChallenge(challenge));
-    dispatch(push(`/challenge/${nextChallenge}`));
+    dispatch(push(`/challenge/${nextChallengeName}`));
   };
 
   changePage = pageIndex => {
@@ -52,7 +52,7 @@ class InfoChallenge extends Component {
         {linkHref && (
           <a
             href={linkHref}
-            className="info-challenge-button info-challenge-button-a"
+            className="button info-challenge-button info-challenge-button-a"
             onClick={() => this.setState({ hasLinkBeenOpened: true })}
             target="_blank"
             rel="noopener noreferrer"
@@ -63,7 +63,7 @@ class InfoChallenge extends Component {
         <div className="info-challenge-button-collection">
           {pageIndex !== 0 && (
             <button
-              className="info-challenge-button"
+              className="button info-challenge-button"
               onClick={() => this.changePage(pageIndex - 1)}
             >
               Go to my previous step
@@ -72,14 +72,14 @@ class InfoChallenge extends Component {
           {pageIndex !== description.length - 1 ? (
             <button
               disabled={!hasLinkBeenOpened && linkHref}
-              className="info-challenge-button"
+              className="button info-challenge-button"
               onClick={() => this.changePage(pageIndex + 1)}
             >
               Go to my next step
             </button>
           ) : (
             <button
-              className="info-challenge-button"
+              className="button info-challenge-button"
               onClick={this.handleFinishClick}
             >
               Finish challenge
@@ -98,29 +98,17 @@ InfoChallenge.propTypes = {
     description: PropTypes.array,
     dashedName: PropTypes.string
   }).isRequired,
-  nextChallenge: PropTypes.string.isRequired,
+  nextChallengeName: PropTypes.string.isRequired,
   dispatch: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => {
-  // FIXME: The structure of challenge state doesn't make much sense and has created this madness
   const currentChallengeName = state.router.pathname.split("/")[2];
   const challenge = state.challenges[currentChallengeName];
-  let nextChallenge = "";
-  if (Object.keys(state.map).length > 0) {
-    const challenges = Object.values(state.map)
-      .reduce(
-        (acc, superBlock) => acc.concat(Object.values(superBlock.blocks)),
-        []
-      )
-      .reduce((acc, block) => acc.concat(Object.keys(block.challenges)), []);
-    const currentIndex = challenges.findIndex(
-      challengeName => challengeName === currentChallengeName
-    );
-    nextChallenge = challenges[currentIndex + 1];
-  }
-
-  return { challenge, nextChallenge };
+  return {
+    challenge,
+    nextChallengeName: getNextChallengeName(state)
+  };
 };
 
 export default connect(mapStateToProps)(InfoChallenge);

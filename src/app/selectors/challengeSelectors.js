@@ -22,15 +22,3 @@ export const getNextChallengeName = createSelector(
     return nextChallengeName;
   }
 );
-
-const getRouter = state => state.router;
-
-export const getHeadTitle = createSelector([getRouter], router => {
-  if (router.result) {
-    if (router.pathname === "/about") {
-      return `${router.result.title} - Very very neat`;
-    }
-    return router.result.title;
-  }
-  return "No router title";
-});

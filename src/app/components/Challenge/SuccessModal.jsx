@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { push } from "redux-little-router";
-
 import Modal from "react-modal";
 import FaCheckCircle from "react-icons/lib/fa/check-circle";
+
 import { finishChallenge } from "../../actionCreators";
 import { getNextChallengeName } from "../../selectors/challengeSelectors";
 
@@ -13,7 +13,6 @@ import "./SuccessModal.scss";
 class SuccessModal extends Component {
   handleSubmitChallenge = () => {
     const { dispatch, challenge, nextChallengeName } = this.props;
-
     dispatch(finishChallenge(challenge));
     dispatch(push(`/challenge/${nextChallengeName}`));
   };
@@ -23,7 +22,6 @@ class SuccessModal extends Component {
     return (
       <Modal
         isOpen={isOpen}
-        // isOpen
         onRequestClose={closeModal}
         contentLabel="Tests have passed"
         className="success-modal"
