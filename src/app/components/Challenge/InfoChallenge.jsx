@@ -19,6 +19,7 @@ class InfoChallenge extends Component {
   }
 
   handleFinishClick = () => {
+    //Change nextChallenge to nextChallengeName
     const { dispatch, challenge, nextChallenge } = this.props;
 
     dispatch(finishChallenge(challenge));

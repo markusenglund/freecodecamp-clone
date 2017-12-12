@@ -1,17 +1,29 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { push } from "redux-little-router";
+
 import Modal from "react-modal";
 import FaCheckCircle from "react-icons/lib/fa/check-circle";
+import { finishChallenge } from "../../actionCreators";
+import { getNextChallengeName } from "../../selectors/challengeSelectors";
+
 import "./SuccessModal.scss";
 
 class SuccessModal extends Component {
+  handleSubmitChallenge = () => {
+    const { dispatch, challenge, nextChallengeName } = this.props;
+
+    dispatch(finishChallenge(challenge));
+    dispatch(push(`/challenge/${nextChallengeName}`));
+  };
+
   render() {
     const { isOpen, closeModal } = this.props;
     return (
       <Modal
-        // isOpen={isOpen}
-        isOpen
+        isOpen={isOpen}
+        // isOpen
         onRequestClose={closeModal}
         contentLabel="Tests have passed"
         className="success-modal"
@@ -25,7 +37,10 @@ class SuccessModal extends Component {
             <FaCheckCircle />
           </div>
           <div className="success-modal-button-wrapper">
-            <button className="button success-modal-button">
+            <button
+              className="button success-modal-button"
+              onClick={this.handleSubmitChallenge}
+            >
               Submit and go to my next challenge (Ctrl + Enter)
             </button>
           </div>
@@ -37,14 +52,22 @@ class SuccessModal extends Component {
 
 SuccessModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
-  closeModal: PropTypes.func.isRequired
+  closeModal: PropTypes.func.isRequired,
+  challenge: PropTypes.shape({
+    description: PropTypes.array,
+    dashedName: PropTypes.string
+  }).isRequired,
+  nextChallengeName: PropTypes.string.isRequired,
+  dispatch: PropTypes.func.isRequired
 };
 
-// const mapStateToProps = state => {
-//   const challengeName = state.router.pathname.split("/")[2];
-//   const challenge = state.challenges[challengeName];
-//   const testsHavePassed = challenge.tests.every(test => test.hasPassed);
-//   return { testsHavePassed };
-// };
+const mapStateToProps = state => {
+  const challengeName = state.router.pathname.split("/")[2];
+  const challenge = state.challenges[challengeName];
+  return {
+    challenge,
+    nextChallengeName: getNextChallengeName(state)
+  };
+};
 
-export default connect()(SuccessModal);
+export default connect(mapStateToProps)(SuccessModal);
