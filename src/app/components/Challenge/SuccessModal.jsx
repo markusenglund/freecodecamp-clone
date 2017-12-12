@@ -36,7 +36,7 @@ class SuccessModal extends Component {
           </div>
           <div className="success-modal-button-wrapper">
             <button
-              className="button success-modal-button"
+              className="primary-button success-modal-button"
               onClick={this.handleSubmitChallenge}
             >
               Submit and go to my next challenge (Ctrl + Enter)

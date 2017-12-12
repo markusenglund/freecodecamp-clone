@@ -80,7 +80,7 @@ class DomChallenge extends Component {
           ))}
           <div className="dom-challenge-button-wrapper">
             <button
-              className="button dom-challenge-button"
+              className="primary-button dom-challenge-button"
               onClick={this.testCode}
             >
               Run tests (Ctrl + Enter)

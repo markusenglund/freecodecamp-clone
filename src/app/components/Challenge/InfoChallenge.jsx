@@ -52,7 +52,7 @@ class InfoChallenge extends Component {
         {linkHref && (
           <a
             href={linkHref}
-            className="button info-challenge-button-a"
+            className="primary-button info-challenge-button-a"
             onClick={() => this.setState({ hasLinkBeenOpened: true })}
             target="_blank"
             rel="noopener noreferrer"
@@ -63,7 +63,7 @@ class InfoChallenge extends Component {
         <div className="info-challenge-button-collection">
           {pageIndex !== 0 && (
             <button
-              className="button info-challenge-button"
+              className="primary-button info-challenge-button"
               onClick={() => this.changePage(pageIndex - 1)}
             >
               Go to my previous step
@@ -72,14 +72,14 @@ class InfoChallenge extends Component {
           {pageIndex !== description.length - 1 ? (
             <button
               disabled={!hasLinkBeenOpened && linkHref}
-              className="button info-challenge-button"
+              className="primary-button info-challenge-button"
               onClick={() => this.changePage(pageIndex + 1)}
             >
               Go to my next step
             </button>
           ) : (
             <button
-              className="button info-challenge-button"
+              className="primary-button info-challenge-button"
               onClick={this.handleFinishClick}
             >
               Finish challenge

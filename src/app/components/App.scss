@@ -11,7 +11,7 @@ body {
   flex-direction: column;
 }
 
-.button {
+.primary-button {
   background: white;
   color: $green;
   border: 1px $darker-green solid;
@@ -24,12 +24,12 @@ body {
   padding: 10px;
 }
 
-.button:hover,
-.button:focus {
+.primary-button:hover,
+.primary-button:focus {
   background: $green;
   color: $text-grey;
 }
-.button:disabled {
+.primary-button:disabled {
   opacity: 0.5;
   background: $green;
   color: $text-grey;
