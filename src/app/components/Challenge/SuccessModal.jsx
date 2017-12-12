@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Modal from "react-modal";
+import FaCheckCircle from "react-icons/lib/fa/check-circle";
 import "./SuccessModal.scss";
 
 class SuccessModal extends Component {
@@ -20,9 +21,14 @@ class SuccessModal extends Component {
           <div className="success-modal-header">
             <div>Good job!</div>
           </div>
-          <button className="info-challenge-button">
-            Submit and go to my next challenge
-          </button>
+          <div className="success-modal-icon">
+            <FaCheckCircle />
+          </div>
+          <div className="success-modal-button-wrapper">
+            <button className="button success-modal-button">
+              Submit and go to my next challenge (Ctrl + Enter)
+            </button>
+          </div>
         </>
       </Modal>
     );
