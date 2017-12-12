@@ -46,10 +46,11 @@
 }
 
 .info-challenge-button-a {
-  width: 60%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 280px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  text-align: center;
   text-decoration: none;
 }
 
@@ -62,6 +63,9 @@
     width: 100%;
     margin-left: 0px;
     margin-right: 0px;
+  }
+  .info-challenge-button-a {
+    width: 100%;
   }
 }
 

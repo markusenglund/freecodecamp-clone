@@ -52,7 +52,7 @@ class InfoChallenge extends Component {
         {linkHref && (
           <a
             href={linkHref}
-            className="button info-challenge-button info-challenge-button-a"
+            className="button info-challenge-button-a"
             onClick={() => this.setState({ hasLinkBeenOpened: true })}
             target="_blank"
             rel="noopener noreferrer"
