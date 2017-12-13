@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import CodeMirror from "react-codemirror";
 import "./codemirror.css";
 import "./monokai.css";
+
 if (process.browser) {
   require("codemirror/mode/javascript/javascript");
   require("codemirror/mode/htmlmixed/htmlmixed");

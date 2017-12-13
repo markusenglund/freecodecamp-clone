@@ -2,14 +2,11 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-import chai from "chai";
-import jquery from "jquery";
-import FaCheckCircle from "react-icons/lib/fa/check-circle";
-import FaTimesCircle from "react-icons/lib/fa/times-circle";
-
+import ChallengeDescription from "./ChallengeDescription";
 import Editor from "./Editor";
 import Preview from "./Preview";
 import SuccessModal from "./SuccessModal";
+
 import "./DomChallenge.scss";
 
 class DomChallenge extends Component {
@@ -17,7 +14,7 @@ class DomChallenge extends Component {
     super(props);
     const { challenge } = this.props;
     this.state = {
-      code: challenge.challengeSeed[0],
+      code: challenge.challengeSeed.join("\n"),
       modalIsOpen: false
     };
   }
@@ -26,39 +23,8 @@ class DomChallenge extends Component {
     this.setState({ code });
   };
 
-  testCode = () => {
-    const { dispatch, challenge, challengeName } = this.props;
-    const { tests } = challenge;
-    // These variables are needed to eval the test strings.
-    /* eslint-disable no-unused-vars */
-    const { code } = this.state;
-    const { assert } = chai;
-    const $ = jquery;
-    /* eslint-enable no-unused-vars */
-
-    // TODO: Make a temp array of the status (pass or fail) for each test, then submit action when it's all said and done.
-    const testStatuses = [];
-    for (let i = 0; i < tests.length; i += 1) {
-      try {
-        /* eslint-disable no-eval */
-        eval(tests[i].testString);
-        testStatuses[i] = true;
-      } catch (e) {
-        /* eslint-enable no-eval */
-        testStatuses[i] = false;
-      }
-    }
-    // TODO: Submit action to make challenge.tests have hasPassed value
-    dispatch({
-      type: "TEST_CHALLENGE_CODE",
-      testStatuses,
-      challenge,
-      challengeName
-    });
-
-    if (testStatuses.every(test => test)) {
-      this.setState({ modalIsOpen: true });
-    }
+  openModal = () => {
+    this.setState({ modalIsOpen: true });
   };
 
   closeModal = () => {
@@ -66,43 +32,12 @@ class DomChallenge extends Component {
   };
 
   render() {
-    const { description, name, tests } = this.props.challenge;
-    /* eslint-disable react/no-danger */
     return (
       <div className="dom-challenge">
-        <div className="dom-challenge-description">
-          <h1 className="dom-challenge-name">{name}</h1>
-          {description.map((descriptionHtml, i) => (
-            <div
-              key={i}
-              dangerouslySetInnerHTML={{ __html: descriptionHtml }}
-            />
-          ))}
-          <div className="dom-challenge-button-wrapper">
-            <button
-              className="primary-button dom-challenge-button"
-              onClick={this.testCode}
-            >
-              Run tests (Ctrl + Enter)
-            </button>
-          </div>
-          <h3>Test-stuff incomplete</h3>
-          {this.state.testsPassed && "The tests have motherfucking passed"}
-          <div>
-            {tests.map(test => (
-              <div className="challenge-test" key={test.text}>
-                <div>
-                  {test.hasPassed ? (
-                    <FaCheckCircle className="test-icon-pass" />
-                  ) : (
-                    <FaTimesCircle className="test-icon-fail" />
-                  )}
-                </div>
-                <div dangerouslySetInnerHTML={{ __html: test.text }} />
-              </div>
-            ))}
-          </div>
-        </div>
+        <ChallengeDescription
+          code={this.state.code}
+          openModal={this.openModal}
+        />
         <Editor code={this.state.code} updateCode={this.updateCode} />
         <Preview code={this.state.code} />
         <SuccessModal
@@ -111,24 +46,19 @@ class DomChallenge extends Component {
         />
       </div>
     );
-    /* eslint-enable react/no-danger */
   }
 }
 
 DomChallenge.propTypes = {
   challenge: PropTypes.shape({
-    description: PropTypes.arrayOf(PropTypes.string),
-    name: PropTypes.string,
-    tests: PropTypes.arrayOf(PropTypes.object)
-  }).isRequired,
-  challengeName: PropTypes.string.isRequired,
-  dispatch: PropTypes.func.isRequired
+    challengeSeed: PropTypes.arrayOf(PropTypes.string).isRequired
+  }).isRequired
 };
 
 const mapStateToProps = state => {
   const challengeName = state.router.pathname.split("/")[2];
   const challenge = state.challenges[challengeName];
-  return { challenge, challengeName };
+  return { challenge };
 };
 
 export default connect(mapStateToProps)(DomChallenge);

@@ -12,9 +12,10 @@ import "./SuccessModal.scss";
 
 class SuccessModal extends Component {
   handleSubmitChallenge = () => {
-    const { dispatch, challenge, nextChallengeName } = this.props;
+    const { dispatch, challenge, nextChallengeName, closeModal } = this.props;
     dispatch(finishChallenge(challenge));
     dispatch(push(`/challenge/${nextChallengeName}`));
+    closeModal();
   };
 
   render() {
