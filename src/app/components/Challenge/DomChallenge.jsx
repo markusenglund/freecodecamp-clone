@@ -12,15 +12,20 @@ import "./DomChallenge.scss";
 class DomChallenge extends Component {
   constructor(props) {
     super(props);
-    const { challenge } = this.props;
+    const { challengeSeed } = this.props;
     this.state = {
-      code: challenge.challengeSeed.join("\n"),
+      code: challengeSeed.join("\n"),
       modalIsOpen: false
     };
   }
 
-  updateCode = code => {
-    this.setState({ code });
+  componentWillReceiveProps = ({ challengeSeed }) => {
+    console.log("will receive props", challengeSeed);
+    this.setState({ code: challengeSeed.join("\n") });
+  };
+
+  updateCode = (editor, data, value) => {
+    this.setState({ code: value });
   };
 
   openModal = () => {
@@ -50,15 +55,16 @@ class DomChallenge extends Component {
 }
 
 DomChallenge.propTypes = {
-  challenge: PropTypes.shape({
-    challengeSeed: PropTypes.arrayOf(PropTypes.string).isRequired
-  }).isRequired
+  // challenge: PropTypes.shape({
+  challengeSeed: PropTypes.arrayOf(PropTypes.string)
+  // }).isRequired
 };
+DomChallenge.defaultProps = { challengeSeed: [] };
 
 const mapStateToProps = state => {
   const challengeName = state.router.pathname.split("/")[2];
-  const challenge = state.challenges[challengeName];
-  return { challenge };
+  const { challengeSeed } = state.challenges[challengeName];
+  return { challengeSeed };
 };
 
 export default connect(mapStateToProps)(DomChallenge);

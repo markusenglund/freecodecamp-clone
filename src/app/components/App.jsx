@@ -8,7 +8,6 @@ import "./App.scss";
 import Header from "./Header/Header";
 import Map from "./Map/Map";
 import Challenge from "./Challenge/Challenge";
-import { fetchMapData } from "../actionCreators";
 
 class App extends Component {
   onSetSidebarOpen = () => {

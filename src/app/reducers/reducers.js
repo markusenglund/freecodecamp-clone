@@ -56,9 +56,9 @@ const challenges = (state = {}, action) => {
 
 const map = (state = initialMapState, action) => {
   switch (action.type) {
-    case "RECEIVE_MAP_DATA": {
-      return action.payload;
-    }
+    // case "RECEIVE_MAP_DATA": {
+    //   return action.payload;
+    // }
     case "TOGGLE_SUPER_BLOCK_EXPANSION": {
       const superBlockKey = action.payload;
       return {

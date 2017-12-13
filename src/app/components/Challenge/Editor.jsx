@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import CodeMirror from "react-codemirror";
+import { Controlled as CodeMirror } from "react-codemirror2";
 import "./codemirror.css";
 import "./monokai.css";
 
@@ -10,7 +10,7 @@ if (process.browser) {
   require("codemirror/mode/htmlmixed/htmlmixed");
 }
 
-class DomChallenge extends Component {
+class Editor extends Component {
   render() {
     const { updateCode, code } = this.props;
     return (
@@ -29,7 +29,7 @@ class DomChallenge extends Component {
   }
 }
 
-DomChallenge.propTypes = {
+Editor.propTypes = {
   updateCode: PropTypes.func.isRequired,
   code: PropTypes.string.isRequired
 };
@@ -40,4 +40,4 @@ DomChallenge.propTypes = {
 //   return { challenge };
 // };
 
-export default connect()(DomChallenge);
+export default connect()(Editor);
