@@ -16,7 +16,6 @@ class ChallengeDescription extends Component {
     const $ = jquery;
     /* eslint-enable no-unused-vars */
 
-    // TODO: Make a temp array of the status (pass or fail) for each test, then submit action when it's all said and done.
     const testStatuses = [];
     for (let i = 0; i < tests.length; i += 1) {
       try {
@@ -43,6 +42,9 @@ class ChallengeDescription extends Component {
 
   render = () => {
     const { description, name, tests } = this.props.challenge;
+    if (!description) {
+      return <div className="dom-challenge-description" />;
+    }
 
     /* eslint-disable react/no-danger */
     return (

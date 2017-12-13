@@ -1,3 +1,5 @@
+import initialMapState from "./initial-map-state.json";
+
 const counter = (state = 1, action) => {
   switch (action.type) {
     case "INCREMENT": {
@@ -52,7 +54,7 @@ const challenges = (state = {}, action) => {
   }
 };
 
-const map = (state = {}, action) => {
+const map = (state = initialMapState, action) => {
   switch (action.type) {
     case "RECEIVE_MAP_DATA": {
       return action.payload;
@@ -89,4 +91,4 @@ const map = (state = {}, action) => {
   }
 };
 
-export default { sidebar, challenges, map };
+export default { sidebar, challenges, map, counter };

@@ -11,11 +11,6 @@ import Challenge from "./Challenge/Challenge";
 import { fetchMapData } from "../actionCreators";
 
 class App extends Component {
-  componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch(fetchMapData());
-  }
-
   onSetSidebarOpen = () => {
     const { dispatch } = this.props;
     dispatch({ type: "TOGGLE_SIDEBAR_OPEN" });

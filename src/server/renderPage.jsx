@@ -29,7 +29,7 @@ export default function renderPage(req, res) {
       <Head />
     </Provider>
   );
-  const preloadedState = store.getState();
+  const preloadedState = { counter: store.getState().counter };
   const html = `
     <!DOCTYPE html>
     <html>

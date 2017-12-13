@@ -11,29 +11,29 @@ const newSuperBlocks = Object.keys(superBlocks).reduce(
     ...acc,
     [superBlockKey]: {
       title: superBlocks[superBlockKey].title,
-      order: superBlocks[superBlockKey].order,
+      // order: superBlocks[superBlockKey].order,
       blocks: Object.keys(blocks).reduce((acc2, blockKey) => {
         if (blocks[blockKey].superBlock === superBlockKey) {
           return {
             ...acc2,
             [blockKey]: {
               title: blocks[blockKey].title,
-              order: blocks[blockKey].order,
+              // order: blocks[blockKey].order,
               isLocked: blocks[blockKey].isLocked,
               time: blocks[blockKey].time,
               // id: blocks[blockKey].id,
               challenges: Object.keys(challenges).reduce(
                 (acc3, challengeKey) => {
                   if (challenges[challengeKey].block === blockKey) {
-                    console.log(challenges[challengeKey].required);
+                    // console.log(challenges[challengeKey].required);
                     return {
                       ...acc3,
                       [challengeKey]: {
                         title: challenges[challengeKey].title,
                         // id: challenges[challengeKey].id,
                         challengeType: challenges[challengeKey].challengeType,
-                        time: challenges[challengeKey].time,
-                        order: challenges[challengeKey].suborder
+                        time: challenges[challengeKey].time
+                        // order: challenges[challengeKey].suborder
                       }
                     };
                   }
