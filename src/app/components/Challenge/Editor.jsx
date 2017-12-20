@@ -5,10 +5,12 @@ import { Controlled as CodeMirror } from "react-codemirror2";
 import "./codemirror.css";
 import "./monokai.css";
 
+/* eslint-disable global-require */
 if (process.browser) {
   require("codemirror/mode/javascript/javascript");
   require("codemirror/mode/htmlmixed/htmlmixed");
 }
+/* eslint-enable */
 
 class Editor extends Component {
   render() {

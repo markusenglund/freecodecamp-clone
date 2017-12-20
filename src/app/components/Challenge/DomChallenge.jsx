@@ -14,13 +14,12 @@ class DomChallenge extends Component {
     super(props);
     const { challengeSeed } = this.props;
     this.state = {
-      code: challengeSeed ? challengeSeed.join("\n") : "",
+      code: challengeSeed.join("\n"),
       modalIsOpen: false
     };
   }
 
   componentWillReceiveProps = ({ challengeSeed }) => {
-    console.log("will receive props", challengeSeed);
     this.setState({ code: challengeSeed.join("\n") });
   };
 
@@ -55,9 +54,7 @@ class DomChallenge extends Component {
 }
 
 DomChallenge.propTypes = {
-  // challenge: PropTypes.shape({
   challengeSeed: PropTypes.arrayOf(PropTypes.string)
-  // }).isRequired
 };
 DomChallenge.defaultProps = { challengeSeed: [] };
 

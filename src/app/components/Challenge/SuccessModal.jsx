@@ -11,6 +11,12 @@ import { getNextChallengeName } from "../../selectors/challengeSelectors";
 import "./SuccessModal.scss";
 
 class SuccessModal extends Component {
+  componentWillMount() {
+    if (process.browser) {
+      Modal.setAppElement("#app");
+    }
+  }
+
   handleSubmitChallenge = () => {
     const { dispatch, challenge, nextChallengeName, closeModal } = this.props;
     dispatch(finishChallenge(challenge));
