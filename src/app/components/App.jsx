@@ -31,16 +31,7 @@ class App extends Component {
             zIndex: 10
           },
           overlay: {
-            zIndex: 1,
-            position: "relative",
-            top: "none",
-            left: "none",
-            right: "none",
-            bottom: "none",
-            opacity: 1,
-            visibility: "visible",
-            transition: "none",
-            backgroundColor: "none"
+            position: "relative"
           }
         }}
         sidebarClassName="sidebar"
