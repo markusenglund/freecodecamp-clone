@@ -24,7 +24,7 @@
     "jquery": "^3.2.1",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
-    "react-aria-menubutton": "github:yogaboll/react-aria-menubutton",
+    "react-aria-menubutton": "^5.1.1",
     "react-codemirror2": "^3.0.7",
     "react-dom": "^16.2.0",
     "react-icons": "^2.2.7",
