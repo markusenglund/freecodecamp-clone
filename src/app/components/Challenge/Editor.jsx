@@ -13,10 +13,17 @@ if (process.browser) {
 class Editor extends Component {
   render() {
     const { updateCode, code } = this.props;
+    if (!code) {
+      return (
+        <div className="challenge-editor">
+          <div className="mock-codemirror" />
+        </div>
+      );
+    }
     return (
       <CodeMirror
         value={code}
-        onChange={updateCode}
+        onBeforeChange={updateCode}
         options={{
           lineNumbers: true,
           lineWrapping: true,

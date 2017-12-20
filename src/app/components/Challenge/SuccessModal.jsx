@@ -62,7 +62,7 @@ SuccessModal.propTypes = {
 
 const mapStateToProps = state => {
   const challengeName = state.router.pathname.split("/")[2];
-  const challenge = state.challenges[challengeName];
+  const challenge = state.challenges[challengeName] || {};
   return {
     challenge,
     nextChallengeName: getNextChallengeName(state)

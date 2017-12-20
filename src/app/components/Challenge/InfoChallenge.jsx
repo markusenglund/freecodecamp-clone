@@ -33,6 +33,11 @@ class InfoChallenge extends Component {
   render() {
     const { description } = this.props.challenge;
     const { pageIndex, hasLinkBeenOpened } = this.state;
+
+    if (!description) {
+      return <div>SPINNER</div>;
+    }
+
     const [imageSrc, imageAlt, infoText, linkHref] = description[pageIndex];
     return (
       <div
@@ -104,7 +109,7 @@ InfoChallenge.propTypes = {
 
 const mapStateToProps = state => {
   const currentChallengeName = state.router.pathname.split("/")[2];
-  const challenge = state.challenges[currentChallengeName];
+  const challenge = state.challenges[currentChallengeName] || {};
   return {
     challenge,
     nextChallengeName: getNextChallengeName(state)

@@ -24,15 +24,14 @@ class Challenge extends Component {
 
   render() {
     const { challenge, challengeType } = this.props;
-    if (Object.keys(challenge).length !== 0) {
-      if (challengeType === 7) {
-        return <InfoChallenge />;
-      }
-      if (challengeType === 0) {
-        return <DomChallenge />;
-      }
-      return <div>{challenge.description}</div>;
+    // if (Object.keys(challenge).length !== 0) {
+    if (challengeType === 7) {
+      return <InfoChallenge />;
     }
+    if (challengeType === 0) {
+      return <DomChallenge />;
+    }
+    // return <div>{challenge.description}</div>;
     return <div>SPINNER</div>;
   }
 }

@@ -14,7 +14,7 @@ class DomChallenge extends Component {
     super(props);
     const { challengeSeed } = this.props;
     this.state = {
-      code: challengeSeed.join("\n"),
+      code: challengeSeed ? challengeSeed.join("\n") : "",
       modalIsOpen: false
     };
   }
@@ -63,8 +63,8 @@ DomChallenge.defaultProps = { challengeSeed: [] };
 
 const mapStateToProps = state => {
   const challengeName = state.router.pathname.split("/")[2];
-  const { challengeSeed } = state.challenges[challengeName];
-  return { challengeSeed };
+  const challenge = state.challenges[challengeName] || {};
+  return { challengeSeed: challenge.challengeSeed };
 };
 
 export default connect(mapStateToProps)(DomChallenge);
