@@ -6,8 +6,7 @@
 }
 
 .dom-challenge-description {
-  background: red;
-  width: 25%;
+  width: 30%;
   height: 100%;
   color: $dark-text;
   font-size: 17px;
@@ -65,7 +64,7 @@
 
 .challenge-editor {
   height: 100%;
-  width: 45%;
+  width: 70%;
   overflow: auto;
   padding: 10px;
   box-sizing: border-box;
@@ -81,11 +80,26 @@
   }
 }
 
-.challenge-preview {
+.challenge-preview-wrapper {
   height: 100%;
-  width: 30%;
+  min-width: 350px;
   overflow: auto;
-
+  position: relative;
   padding: 10px;
   box-sizing: border-box;
+  // text-align: center;
+}
+
+.challenge-preview {
+  width: 318px;
+  height: 648px;
+}
+
+.challenge-preview-text {
+  position: absolute;
+  display: block;
+  top: 85px;
+  left: 30px;
+  width: 264px;
+  margin: 8px;
 }
