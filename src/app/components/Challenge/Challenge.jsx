@@ -5,6 +5,7 @@ import { fetchChallenge } from "../../actionCreators";
 import { getChallengeType } from "../../selectors/challengeSelectors";
 import InfoChallenge from "./InfoChallenge";
 import DomChallenge from "./DomChallenge";
+import ProjectChallenge from "./ProjectChallenge";
 import "./Challenge.scss";
 
 class Challenge extends Component {
@@ -30,6 +31,9 @@ class Challenge extends Component {
     }
     if (challengeType === 0) {
       return <DomChallenge />;
+    }
+    if (challengeType === 3) {
+      return <ProjectChallenge />;
     }
     // return <div>{challenge.description}</div>;
     return <div>SPINNER</div>;
