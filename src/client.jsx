@@ -2,44 +2,27 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
-import { routerForBrowser } from "redux-little-router";
-import ReduxThunk from "redux-thunk";
+import thunk from "redux-thunk";
+import { BrowserRouter } from "react-router-dom";
 import { composeWithDevTools } from "redux-devtools-extension";
 import reducers from "./app/reducers/reducers";
 import App from "./app/components/App";
-import Head from "./app/components/Head";
-import routes from "./app/routes";
-
-const { reducer, middleware, enhancer } = routerForBrowser({
-  routes
-});
 
 const preloadedState = window.PRELOADED_STATE;
 
 delete window.PRELOADED_STATE;
 
 const store = createStore(
-  combineReducers({ ...reducers, router: reducer }),
+  combineReducers(reducers),
   preloadedState,
-  composeWithDevTools(enhancer, applyMiddleware(ReduxThunk, middleware))
+  composeWithDevTools(applyMiddleware(thunk))
 );
-const render = () => {
-  ReactDOM.hydrate(
-    <Provider store={store}>
+
+ReactDOM.hydrate(
+  <Provider store={store}>
+    <BrowserRouter>
       <App />
-    </Provider>,
-    document.getElementById("app")
-  );
-};
-
-const renderHead = () => {
-  ReactDOM.hydrate(
-    <Provider store={store}>
-      <Head />
-    </Provider>,
-    document.querySelector("head")
-  );
-};
-
-render();
-renderHead();
+    </BrowserRouter>
+  </Provider>,
+  document.getElementById("app")
+);

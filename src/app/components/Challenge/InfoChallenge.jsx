@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { push } from "redux-little-router";
-
+import { withRouter } from "react-router-dom";
 import InvisibleImages from "./InvisibleImages";
 import { finishChallenge } from "../../actionCreators";
 import { getNextChallengeName } from "../../selectors/challengeSelectors";
@@ -20,10 +19,11 @@ class InfoChallenge extends Component {
   }
 
   handleFinishClick = () => {
-    const { dispatch, challenge, nextChallengeName } = this.props;
+    const { dispatch, challenge, nextChallengeName, history } = this.props;
 
     dispatch(finishChallenge(challenge));
-    dispatch(push(`/challenge/${nextChallengeName}`));
+    // FIXME: Should be inside finishChallenge action creator
+    history.push(`/challenge/${nextChallengeName}`);
   };
 
   changePage = pageIndex => {
@@ -104,16 +104,17 @@ InfoChallenge.propTypes = {
     dashedName: PropTypes.string
   }).isRequired,
   nextChallengeName: PropTypes.string.isRequired,
-  dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
+  history: PropTypes.shape({ push: PropTypes.func }).isRequired
 };
 
-const mapStateToProps = state => {
-  const currentChallengeName = state.router.pathname.split("/")[2];
-  const challenge = state.challenges[currentChallengeName] || {};
+const mapStateToProps = (state, { match }) => {
+  const challengeName = match.params.challenge;
+  const challenge = state.challenges[challengeName] || {};
   return {
     challenge,
-    nextChallengeName: getNextChallengeName(state)
+    nextChallengeName: getNextChallengeName(state, challengeName)
   };
 };
 
-export default connect(mapStateToProps)(InfoChallenge);
+export default withRouter(connect(mapStateToProps)(InfoChallenge));

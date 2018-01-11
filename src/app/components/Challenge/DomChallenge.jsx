@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 
 import ChallengeDescription from "./ChallengeDescription";
 import Editor from "./Editor";
@@ -58,10 +59,10 @@ DomChallenge.propTypes = {
 };
 DomChallenge.defaultProps = { challengeSeed: [] };
 
-const mapStateToProps = state => {
-  const challengeName = state.router.pathname.split("/")[2];
+const mapStateToProps = (state, { match }) => {
+  const challengeName = match.params.challenge;
   const challenge = state.challenges[challengeName] || {};
   return { challengeSeed: challenge.challengeSeed };
 };
 
-export default connect(mapStateToProps)(DomChallenge);
+export default withRouter(connect(mapStateToProps)(DomChallenge));

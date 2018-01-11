@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { push } from "redux-little-router";
+import { withRouter } from "react-router-dom";
 import Modal from "react-modal";
 import FaCheckCircle from "react-icons/lib/fa/check-circle";
 
@@ -18,9 +18,16 @@ class SuccessModal extends Component {
   }
 
   handleSubmitChallenge = () => {
-    const { dispatch, challenge, nextChallengeName, closeModal } = this.props;
+    const {
+      dispatch,
+      challenge,
+      nextChallengeName,
+      closeModal,
+      history
+    } = this.props;
     dispatch(finishChallenge(challenge));
-    dispatch(push(`/challenge/${nextChallengeName}`));
+    // FIXME: This should be in the finishChallenge action creator I reckon.
+    history.push(`/challenge/${nextChallengeName}`);
     closeModal();
   };
 
@@ -63,16 +70,17 @@ SuccessModal.propTypes = {
     dashedName: PropTypes.string
   }).isRequired,
   nextChallengeName: PropTypes.string.isRequired,
-  dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
+  history: PropTypes.shape({ push: PropTypes.func }).isRequired
 };
 
-const mapStateToProps = state => {
-  const challengeName = state.router.pathname.split("/")[2];
+const mapStateToProps = (state, { match }) => {
+  const challengeName = match.params.challenge;
   const challenge = state.challenges[challengeName] || {};
   return {
     challenge,
-    nextChallengeName: getNextChallengeName(state)
+    nextChallengeName: getNextChallengeName(state, challengeName)
   };
 };
 
-export default connect(mapStateToProps)(SuccessModal);
+export default withRouter(connect(mapStateToProps)(SuccessModal));

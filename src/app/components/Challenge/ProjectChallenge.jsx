@@ -1,11 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-// import { push } from "redux-little-router";
-
-// import InvisibleImages from "./InvisibleImages";
-// import { finishChallenge } from "../../actionCreators";
-// import { getNextChallengeName } from "../../selectors/challengeSelectors";
+import { withRouter } from "react-router-dom";
 
 class ProjectChallenge extends Component {
   render() {
@@ -48,13 +44,13 @@ ProjectChallenge.propTypes = {
   // dispatch: PropTypes.func.isRequired
 };
 
-const mapStateToProps = state => {
-  const currentChallengeName = state.router.pathname.split("/")[2];
-  const challenge = state.challenges[currentChallengeName] || {};
+const mapStateToProps = (state, { match }) => {
+  const challengeName = match.params.challenge;
+  const challenge = state.challenges[challengeName] || {};
   return {
     challenge
     // nextChallengeName: getNextChallengeName(state)
   };
 };
 
-export default connect(mapStateToProps)(ProjectChallenge);
+export default withRouter(connect(mapStateToProps)(ProjectChallenge));

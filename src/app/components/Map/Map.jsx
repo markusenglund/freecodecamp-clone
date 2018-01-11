@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { Link } from "redux-little-router";
+import { Link } from "react-router-dom";
 import Transition from "react-transition-group/Transition";
 import FaCaretRight from "react-icons/lib/fa/caret-right";
 import FaCircleThin from "react-icons/lib/fa/circle-thin";
@@ -146,7 +146,7 @@ class Map extends Component {
                                 <div key={challengeKey}>
                                   <Link
                                     className="map-item challenge-title"
-                                    href={`/challenge/${challengeKey}`}
+                                    to={`/challenge/${challengeKey}`}
                                   >
                                     <div>
                                       {superBlocks[superBlockKey].blocks[

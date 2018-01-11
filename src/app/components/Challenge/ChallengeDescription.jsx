@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import chai from "chai";
 import jquery from "jquery";
 import FaCheckCircle from "react-icons/lib/fa/check-circle";
@@ -94,10 +95,10 @@ ChallengeDescription.propTypes = {
   dispatch: PropTypes.func.isRequired
 };
 
-const mapStateToProps = state => {
-  const challengeName = state.router.pathname.split("/")[2];
+const mapStateToProps = (state, { match }) => {
+  const challengeName = match.params.challenge;
   const challenge = state.challenges[challengeName] || {};
   return { challenge, challengeName };
 };
 
-export default connect(mapStateToProps)(ChallengeDescription);
+export default withRouter(connect(mapStateToProps)(ChallengeDescription));

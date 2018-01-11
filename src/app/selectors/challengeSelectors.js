@@ -1,6 +1,6 @@
 import { createSelector } from "reselect";
 
-const getCurrentChallengeName = state => state.router.pathname.split("/")[2];
+const getCurrentChallengeName = (state, challengeName) => challengeName;
 const getMap = state => state.map;
 
 export const getNextChallengeName = createSelector(

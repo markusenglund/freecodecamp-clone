@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Link } from "redux-little-router";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import "./Header.scss";
 import CommunityDropdown from "./CommunityDropdown";
@@ -21,7 +21,7 @@ class Header extends Component {
   render() {
     return (
       <header>
-        <Link href="/" className="header-logo-link">
+        <Link to="/" className="header-logo-link">
           <img src={logo} alt="freeCodeCamp logo" className="header-logo" />
         </Link>
         <div className="header-right">
@@ -43,7 +43,7 @@ class Header extends Component {
             Donate
           </a>
           <CommunityDropdown />
-          <Link href="/profile" className="header-item">
+          <Link to="/profile" className="header-item">
             Profile
           </Link>
         </div>

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Fragment } from "redux-little-router";
+import { Route } from "react-router-dom";
 import PropTypes from "prop-types";
 import Sidebar from "react-sidebar";
 
@@ -38,9 +38,7 @@ class App extends Component {
       >
         <div className="main-content">
           <Header />
-          <Fragment forRoute="/challenge/:challenge">
-            <Challenge />
-          </Fragment>
+          <Route path="/challenge/:challenge" component={Challenge} />
         </div>
       </Sidebar>
     );

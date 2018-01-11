@@ -24,8 +24,7 @@ class Challenge extends Component {
   }
 
   render() {
-    const { challenge, challengeType } = this.props;
-    // if (Object.keys(challenge).length !== 0) {
+    const { challengeType } = this.props;
     if (challengeType === 7) {
       return <InfoChallenge />;
     }
@@ -35,7 +34,6 @@ class Challenge extends Component {
     if (challengeType === 3) {
       return <ProjectChallenge />;
     }
-    // return <div>{challenge.description}</div>;
     return <div>SPINNER</div>;
   }
 }
@@ -47,12 +45,12 @@ Challenge.propTypes = {
   challengeType: PropTypes.number.isRequired
 };
 
-const mapStateToProps = state => {
-  const challengeName = state.router.pathname.split("/")[2];
+const mapStateToProps = (state, { match }) => {
+  const challengeName = match.params.challenge;
   return {
     challenge: state.challenges[challengeName] || {},
     challengeName,
-    challengeType: getChallengeType(state)
+    challengeType: getChallengeType(state, challengeName)
   };
 };
 
